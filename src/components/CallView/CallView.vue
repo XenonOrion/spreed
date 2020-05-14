@@ -181,7 +181,6 @@ export default {
 			const callViewClass = {
 				'incall': this.remoteParticipantsCount > 0,
 				'screensharing': this.screenSharingActive,
-				'constrained-layout': this.useConstrainedLayout,
 			}
 			callViewClass['participants-' + (this.remoteParticipantsCount + 1)] = true
 
@@ -498,12 +497,6 @@ export default {
 	}
 }
 
-.constrained-layout #videos .videoContainer:not(.promoted) ::v-deep video {
-	/* Make the unpromoted videos smaller to not overlap too much the promoted
-	 * video */
-	max-height: 100px;
-}
-
 #videos .videoContainer ::v-deep .avatardiv {
 	box-shadow: 0 0 15px var(--color-box-shadow);
 }
@@ -568,13 +561,6 @@ export default {
 	}
 }
 
-.constrained-layout.participants-1 .videoView,
-.constrained-layout.participants-2 .videoView {
-	/* Do not force the width to 200px, as otherwise the video is too tall and
-	 * overlaps too much with the promoted video. */
-	min-width: initial;
-}
-
 .participants-1 .videoView ::v-deep video,
 .participants-2 .videoView ::v-deep video {
 	position: absolute;
@@ -590,12 +576,6 @@ export default {
 	height: calc(100% - 200px);
 	top: 0;
 	background-color: transparent;
-}
-
-.constrained-layout.screensharing #screens {
-	/* The row with the participants is shorter in the constrained layout to
-	 * make room for the promoted video and the shared screens. */
-	height: calc(100% - 100px);
 }
 
 .screensharing .screenContainer {
@@ -620,13 +600,6 @@ export default {
 	text-overflow: ellipsis;
 }
 
-.constrained-layout ::v-deep .nameIndicator {
-	/* Reduce padding to bring the name closer to the bottom */
-	padding: 3px;
-	/* Use default font size, as it takes too much space otherwise */
-	font-size: initial;
-}
-
 ::v-deep .videoView .nameIndicator {
 	padding: 0;
 	overflow: visible;
@@ -647,11 +620,6 @@ export default {
 /* ellipsize name in 1on1 calls */
 .participants-2 ::v-deep .videoContainer.promoted + .videoContainer-dummy .nameIndicator {
 	padding: 12px 35%;
-}
-
-.constrained-layout.participants-2 ::v-deep .videoContainer.promoted + .videoContainer-dummy .nameIndicator {
-	/* Reduce padding to bring the name closer to the bottom */
-	padding: 3px 35%;
 }
 
 #videos .videoContainer.speaking:not(.videoView) ::v-deep .nameIndicator,
