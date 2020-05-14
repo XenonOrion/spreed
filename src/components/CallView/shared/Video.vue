@@ -170,6 +170,11 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		// True when this component is used as main video in the sidebar
+		isSidebar: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	data() {

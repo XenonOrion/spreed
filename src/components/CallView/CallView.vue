@@ -36,6 +36,7 @@
 						:is-grid="true"
 						:fit-video="true"
 						:is-big="true"
+						:is-sidebar="isSidebar"
 						@switchScreenToId="_switchScreenToId" />
 				</template>
 			</div>
@@ -127,6 +128,11 @@ export default {
 		token: {
 			type: String,
 			required: true,
+		},
+		// Determines wether this component is used in the sidebar
+		isSidebar: {
+			type: Boolean,
+			default: false,
 		},
 	},
 
